@@ -1,0 +1,43 @@
+import java.util.*;
+class Graph
+{   
+    List<List<Integer>> adjlist;
+    Graph(int n)
+    {
+        adjlist=new ArrayList<>();
+        for(int i=0;i<n;i++)
+        {
+            adjlist.add(new ArrayList<>());
+        }
+    }
+    void addedge(int src,int desti)
+    {
+        adjlist.get(src).add(desti);
+        adjlist.get(desti).add(src);
+    }
+    void display()
+    {
+        for(int i=0;i<adjlist.size();i++)
+        {
+            System.out.print(i+"->"); 
+            for(int num:adjlist.get(i))
+            {
+                System.out.print(num+" ");
+            }
+            System.out.println();
+        }
+    }
+    public static void main (String[] args) {
+        Scanner obj=new Scanner(System.in);
+        int V=obj.nextInt();
+        int E=obj.nextInt();
+        Graph g=new Graph(V);
+        for(int i=0;i<E;i++)
+        {
+            int u=obj.nextInt();
+            int v=obj.nextInt();
+            g.addedge(u,v);
+        }
+        g.display();
+    }
+}
