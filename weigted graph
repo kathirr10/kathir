@@ -1,0 +1,45 @@
+import java.util.*;
+class Graph
+{  
+    int adjmatrix[][];
+    Graph(int n)
+    {
+       adjmatrix=new int[n][n];
+    }
+    void addedge(int src,int desti,int w)
+    {
+       adjmatrix[src][desti]=w;
+       adjmatrix[desti][src]=w;
+    }
+    void display()
+    {
+        System.out.println("Matrix");
+        for(int i=0;i<adjmatrix.length;i++)
+        {
+            for(int j=0;j<adjmatrix.length;j++)
+            {
+                System.out.print(adjmatrix[i][j]+" ");
+            }
+            System.out.println();
+        }
+       
+    }
+    public static void main (String[] args) 
+    {
+        Scanner obj=new Scanner(System.in);
+        System.out.println("Enter the number of vertices: ");
+        int V=obj.nextInt();
+        System.out.println("Enter the number of edges: ");
+        int E=obj.nextInt();
+        Graph g=new Graph(V);
+        System.out.println("Enter the edges with weights (u v w): ");
+        for(int i=0;i<E;i++)
+        {
+            int u=obj.nextInt();
+            int v=obj.nextInt();
+            int w=obj.nextInt();
+            g.addedge(u,v,w);
+        }
+        g.display();
+    }
+}
